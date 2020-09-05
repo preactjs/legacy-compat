@@ -1,0 +1,93 @@
+{
+  "name": "@preact/legacy-compat",
+  "version": "0.1.0",
+  "description": "Preact compatibility layer that supports deprecated React APIs'",
+  "main": "./dist/legacy-compat.js",
+  "module": "./dist/legacy-compat.module.js",
+  "scripts": {
+    "build": "microbundle -f esm,cjs,umd",
+    "pretest": "npm run build",
+    "test": "eslint src test && jest"
+  },
+  "repository": "preactjs/legacy-compat",
+  "author": "The Preact Authors <authors@preactjs.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/preactjs/legacy-compat",
+  "dependencies": {
+    "preact": "^10.4.8",
+    "prop-types": "^15.7.2"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-react-jsx": "^7.10.4",
+    "@types/jest": "^26.0.13",
+    "eslint": "^7.8.1",
+    "eslint-config-developit": "^1.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "jest": "^26.4.2",
+    "microbundle": "^0.12.3",
+    "npm-merge-driver-install": "^1.1.1",
+    "prettier": "^2.1.1"
+  },
+  "babel": {
+    "env": {
+      "test": {
+        "presets": [
+          [
+            "@babel/preset-env",
+            {
+              "targets": {
+                "node": "current"
+              }
+            }
+          ]
+        ],
+        "plugins": [
+          "@babel/plugin-transform-react-jsx"
+        ]
+      }
+    }
+  },
+  "eslintConfig": {
+    "extends": [
+      "developit",
+      "prettier"
+    ],
+    "settings": {
+      "react": {
+        "pragma": "createElement"
+      }
+    },
+    "rules": {
+      "camelcase": [
+        1,
+        {
+          "allow": [
+            "__test__*",
+            "unstable_*",
+            "UNSAFE_*"
+          ]
+        }
+      ],
+      "prefer-rest-params": 0,
+      "prefer-spread": 0,
+      "no-cond-assign": 0,
+      "no-prototype-builtins": 0,
+      "no-duplicate-imports": 0,
+      "react/jsx-no-bind": 0,
+      "react/no-danger": "off",
+      "react/prefer-stateless-function": 0
+    }
+  },
+  "eslintIgnore": [
+    "test/fixtures",
+    "test/ts/",
+    "*.ts",
+    "dist"
+  ],
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "none",
+    "useTabs": true,
+    "tabWidth": 2
+  }
+}
