@@ -13,6 +13,9 @@
   "author": "The Preact Authors <authors@preactjs.com>",
   "license": "MIT",
   "homepage": "https://github.com/preactjs/legacy-compat",
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "preact": "^10.4.8",
     "prop-types": "^15.7.2"
