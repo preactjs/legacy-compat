@@ -1,5 +1,6 @@
 {
   "name": "@preact/legacy-compat",
+  "public": true,
   "version": "0.1.0",
   "description": "Preact compatibility layer that supports deprecated React APIs'",
   "main": "./dist/legacy-compat.js",
