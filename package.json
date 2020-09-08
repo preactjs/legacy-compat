@@ -3,10 +3,11 @@
   "public": true,
   "version": "0.1.0",
   "description": "Preact compatibility layer that supports deprecated React APIs'",
-  "main": "./dist/legacy-compat.js",
   "module": "./dist/legacy-compat.module.js",
+  "main": "./dist/legacy-compat.js",
+  "unpkg": "./dist/legacy-compat.umd.js",
   "scripts": {
-    "build": "microbundle -f esm,cjs,umd",
+    "build": "microbundle -f es,cjs,umd",
     "pretest": "npm run build",
     "test": "eslint src test && jest"
   },
