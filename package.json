@@ -18,8 +18,10 @@
   "files": [
     "dist"
   ],
+  "peerDependencies": {
+    "preact": ">=10"
+  },
   "dependencies": {
-    "preact": "^10.4.8",
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
@@ -31,6 +33,7 @@
     "jest": "^26.4.2",
     "microbundle": "^0.12.3",
     "npm-merge-driver-install": "^1.1.1",
+    "preact": "^10.4.8",
     "prettier": "^2.1.1"
   },
   "babel": {
