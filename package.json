@@ -31,7 +31,7 @@
     "eslint-config-developit": "^1.2.0",
     "eslint-config-prettier": "^6.11.0",
     "jest": "^26.4.2",
-    "microbundle": "^0.12.3",
+    "microbundle": "^0.13.0",
     "npm-merge-driver-install": "^1.1.1",
     "preact": "^10.4.8",
     "prettier": "^2.1.1"
