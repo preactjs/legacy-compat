@@ -33,7 +33,7 @@
     "jest": "^26.4.2",
     "microbundle": "^0.13.0",
     "npm-merge-driver-install": "^1.1.1",
-    "preact": "^10.4.8",
+    "preact": "^10.5.12",
     "prettier": "^2.1.1"
   },
   "babel": {
