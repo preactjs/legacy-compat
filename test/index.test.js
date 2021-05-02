@@ -45,6 +45,22 @@ describe('Component', () => {
 		});
 	});
 
+	describe('<img />', () => {
+		it('should remove px in width/height', () => {
+			ReactDOM.render(<img height="100px" width="100px" />, scratch);
+			expect(scratch.firstElementChild.getAttribute('height')).toEqual('100');
+			expect(scratch.firstElementChild.getAttribute('width')).toEqual('100');
+		});
+
+		it('should move % in width/height to style', () => {
+			ReactDOM.render(<img height="100%" width="100%" />, scratch);
+			expect(scratch.firstElementChild.getAttribute('height')).toEqual(null);
+			expect(scratch.firstElementChild.getAttribute('width')).toEqual(null);
+			expect(scratch.firstElementChild.style.height).toEqual('100%');
+			expect(scratch.firstElementChild.style.width).toEqual('100%');
+		});
+	});
+
 	describe('getInitialState', () => {
 		it('should be called during creation', () => {
 			let c;
