@@ -50,15 +50,16 @@ describe('Component', () => {
 			ReactDOM.render(<img height="100px" width="200px" />, scratch);
 			expect(scratch.firstElementChild.getAttribute('height')).toEqual('100px');
 			expect(scratch.firstElementChild.getAttribute('width')).toEqual('200px');
-			expect(scratch.firstElementChild.height).toEqual(100);
-			expect(scratch.firstElementChild.width).toEqual(200);
+			// Note: can't use width/height properties, since they report incorrect values in JSDOM
+			//expect(scratch.firstElementChild.height).toEqual(100);
+			//expect(scratch.firstElementChild.width).toEqual(200);
 		});
 
 		it('should move % in width/height to style', () => {
 			ReactDOM.render(<img height="50%" width="100%" />, scratch);
 			expect(scratch.firstElementChild.getAttribute('height')).toEqual('50%');
 			expect(scratch.firstElementChild.getAttribute('width')).toEqual('100%');
-			// Note: can't use width/height properties 
+			// Note: can't use width/height properties, since they report incorrect values in JSDOM
 		});
 	});
 
