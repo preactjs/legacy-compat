@@ -80,27 +80,18 @@ options.vnode = (vnode) => {
 			(refSetters[name] = setRef.bind(currentComponent.refs, vnode.ref));
 	}
 
-	if (type == 'img') {
-		if (vnode.props.width) {
-			if (vnode.props.width.endsWith('px')) {
-				vnode.props.width = vnode.props.width.replace('px', '');
-			} else if (vnode.props.width.endsWith('%')) {
-				vnode.props.style = { ...vnode.props.style, width: vnode.props.width }
-				delete vnode.props.width;
-			}
-		}
-
-		if (vnode.props.height) {
-			if (vnode.props.height.endsWith('px')) {
-				vnode.props.height = vnode.props.height.replace('px', '');
-			} else if (vnode.props.height.endsWith('%')) {
-				vnode.props.style = { ...vnode.props.style, height: vnode.props.height }
-				delete vnode.props.height;
-			}
-		}
-	}
-
 	if (props) {
+		if (type == 'img') {
+			if (props.width && isNan(props.width)) {
+				props.Width = props.width;
+				props.width = undefined;
+			}
+			if (props.height && isNan(props.height)) {
+				props.Height = props.height;
+				props.height = undefined;
+			}
+		}
+
 		if (DEV) {
 			if (typeof type === 'function' && type.propTypes) {
 				PropTypes.checkPropTypes(
