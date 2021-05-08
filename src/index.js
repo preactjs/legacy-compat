@@ -82,11 +82,11 @@ options.vnode = (vnode) => {
 
 	if (props) {
 		if (type == 'img') {
-			if (props.width && isNan(props.width)) {
+			if (props.width && isNaN(props.width)) {
 				props.Width = props.width;
 				props.width = undefined;
 			}
-			if (props.height && isNan(props.height)) {
+			if (props.height && isNaN(props.height)) {
 				props.Height = props.height;
 				props.height = undefined;
 			}
