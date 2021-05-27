@@ -1,6 +1,9 @@
 import { act } from 'preact/test-utils';
 import React from '../src';
 import ReactDOM from '../src';
+import Immutable from 'immutable';
+
+/* eslint-disable new-cap */
 
 describe('Component', () => {
 	let scratch;
@@ -46,11 +49,15 @@ describe('Component', () => {
 	});
 
 	describe('Attribute semantics for width & height props on media elements', () => {
-		describe.each(['img', 'video', 'canvas'])('%s', Tag => {
+		describe.each(['img', 'video', 'canvas'])('%s', (Tag) => {
 			it('should remove px in width/height', () => {
 				ReactDOM.render(<Tag height="100px" width="200px" />, scratch);
-				expect(scratch.firstElementChild.getAttribute('height')).toEqual('100px');
-				expect(scratch.firstElementChild.getAttribute('width')).toEqual('200px');
+				expect(scratch.firstElementChild.getAttribute('height')).toEqual(
+					'100px'
+				);
+				expect(scratch.firstElementChild.getAttribute('width')).toEqual(
+					'200px'
+				);
 				// Note: can't use width/height properties, since they report incorrect values in JSDOM
 				//expect(scratch.firstElementChild.height).toEqual(100);
 				//expect(scratch.firstElementChild.width).toEqual(200);
@@ -102,6 +109,61 @@ describe('Component', () => {
 				c.setState({ b: 3 });
 			});
 			expect(c.state).toMatchObject({ a: 2, b: 3 });
+		});
+	});
+
+	describe('Immutable support', () => {
+		it('should render Immutable.List values as text', () => {
+			const ref = React.createRef();
+			ReactDOM.render(
+				<div ref={ref}>{Immutable.List(['a', 'b', 'c'])}</div>,
+				scratch
+			);
+			expect(ref.current).toHaveProperty('textContent', 'abc');
+		});
+
+		it('should render Immutable.List values as elements/components', () => {
+			const ref = React.createRef();
+			ReactDOM.render(
+				<ul ref={ref}>
+					{Immutable.List(['a', 'b', 'c']).map((v) => (
+						<li>{v}</li>
+					))}
+				</ul>,
+				scratch
+			);
+			expect(ref.current).toHaveProperty(
+				'outerHTML',
+				'<ul><li>a</li><li>b</li><li>c</li></ul>'
+			);
+		});
+
+		it('should render Immutable.Map values', () => {
+			ReactDOM.render(
+				<div>{Immutable.Map({ a: 'foo', b: 2, c: <span>three</span> })}</div>,
+				scratch
+			);
+			expect(scratch.innerHTML).toEqual('<div>foo2<span>three</span></div>');
+		});
+
+		it('should render Immutable.List containing component children', () => {
+			const A = jest.fn().mockReturnValue(<li>A</li>);
+			const B = jest.fn().mockReturnValue(<li>B</li>);
+			const C = jest.fn().mockReturnValue(<li>C</li>);
+			const Root = (props) => props.children;
+			ReactDOM.render(
+				<ul>
+					{Immutable.Set([
+						<Root children={Immutable.List([<A />, <B />, <C />])} />,
+						<li>D</li>
+					])}
+				</ul>,
+				scratch
+			);
+			expect(scratch).toHaveProperty(
+				'innerHTML',
+				'<ul><li>A</li><li>B</li><li>C</li><li>D</li></ul>'
+			);
 		});
 	});
 });

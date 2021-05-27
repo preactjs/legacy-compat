@@ -1,7 +1,7 @@
 {
   "name": "@preact/legacy-compat",
   "public": true,
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Preact compatibility layer that supports deprecated React APIs'",
   "module": "./dist/legacy-compat.module.js",
   "main": "./dist/legacy-compat.js",
@@ -30,6 +30,7 @@
     "eslint": "^7.8.1",
     "eslint-config-developit": "^1.2.0",
     "eslint-config-prettier": "^6.11.0",
+    "immutable": "^4.0.0-rc.12",
     "jest": "^26.4.2",
     "microbundle": "^0.13.0",
     "npm-merge-driver-install": "^1.1.1",
