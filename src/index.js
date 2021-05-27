@@ -47,6 +47,7 @@ function replaceIterables(obj) {
 			obj[i] = replaceIterables(obj[i]);
 		}
 	} else if (typeof obj.toJS === 'function') {
+		if ('valueSeq' in obj) obj = obj.valueSeq();
 		obj = obj.toJS();
 	}
 	return obj;
