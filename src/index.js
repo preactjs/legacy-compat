@@ -1,8 +1,14 @@
 import {
 	useState,
+	useId,
 	useReducer,
 	useEffect,
 	useLayoutEffect,
+	useInsertionEffect,
+	useTransition,
+	useDeferredValue,
+	useSyncExternalStore,
+	startTransition,
 	useRef,
 	useImperativeHandle,
 	useMemo,
@@ -27,11 +33,12 @@ import {
 	PureComponent,
 	memo,
 	forwardRef,
+	flushSync,
 	unstable_batchedUpdates,
 	StrictMode,
 	Suspense,
 	SuspenseList,
-	lazy
+	lazy,
 } from 'preact/compat';
 
 import PropTypes from 'prop-types';
@@ -254,9 +261,15 @@ export default {
 	createClass,
 	unstable_renderSubtreeIntoContainer,
 	useState,
+	useId,
 	useReducer,
 	useEffect,
 	useLayoutEffect,
+	useInsertionEffect,
+	useTransition,
+	useDeferredValue,
+	useSyncExternalStore,
+	startTransition,
 	useRef,
 	useImperativeHandle,
 	useMemo,
@@ -281,11 +294,12 @@ export default {
 	PureComponent,
 	memo,
 	forwardRef,
+	flushSync,
 	unstable_batchedUpdates,
 	StrictMode,
 	Suspense,
 	SuspenseList,
-	lazy
+	lazy,
 };
 
 export {
@@ -293,9 +307,15 @@ export {
 	createClass,
 	unstable_renderSubtreeIntoContainer,
 	useState,
+	useId,
 	useReducer,
 	useEffect,
 	useLayoutEffect,
+	useInsertionEffect,
+	useTransition,
+	useDeferredValue,
+	useSyncExternalStore,
+	startTransition,
 	useRef,
 	useImperativeHandle,
 	useMemo,
@@ -320,9 +340,10 @@ export {
 	PureComponent,
 	memo,
 	forwardRef,
+	flushSync,
 	unstable_batchedUpdates,
 	StrictMode,
 	Suspense,
 	SuspenseList,
-	lazy
+	lazy,
 };
