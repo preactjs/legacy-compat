@@ -28,6 +28,9 @@ import {
 	createRef,
 	Fragment,
 	isValidElement,
+	isElement,
+	isFragment,
+	isMemo,
 	findDOMNode,
 	Component,
 	PureComponent,
@@ -39,6 +42,7 @@ import {
 	Suspense,
 	SuspenseList,
 	lazy,
+	__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED
 } from 'preact/compat';
 
 import PropTypes from 'prop-types';
@@ -289,6 +293,9 @@ export default {
 	createRef,
 	Fragment,
 	isValidElement,
+	isElement,
+	isFragment,
+	isMemo,
 	findDOMNode,
 	Component,
 	PureComponent,
@@ -300,6 +307,7 @@ export default {
 	Suspense,
 	SuspenseList,
 	lazy,
+	__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED
 };
 
 export {
@@ -335,6 +343,9 @@ export {
 	createRef,
 	Fragment,
 	isValidElement,
+	isElement,
+	isFragment,
+	isMemo,
 	findDOMNode,
 	Component,
 	PureComponent,
@@ -346,4 +357,5 @@ export {
 	Suspense,
 	SuspenseList,
 	lazy,
+	__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED
 };
