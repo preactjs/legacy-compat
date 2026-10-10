@@ -9,6 +9,7 @@
   "scripts": {
     "build": "microbundle -f es && microbundle -f cjs,umd src/cjs.js",
     "pretest": "npm run build",
+    "prepublishOnly": "npm run build",
     "test": "eslint src test && jest"
   },
   "repository": "preactjs/legacy-compat",
