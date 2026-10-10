@@ -8,6 +8,8 @@ import {
 	useTransition,
 	useDeferredValue,
 	useSyncExternalStore,
+	useEffectEvent,
+	use,
 	startTransition,
 	useRef,
 	useImperativeHandle,
@@ -40,7 +42,6 @@ import {
 	unstable_batchedUpdates,
 	StrictMode,
 	Suspense,
-	SuspenseList,
 	lazy,
 	__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED
 } from 'preact/compat';
@@ -82,6 +83,8 @@ options[HOOK_RENDER] = (vnode) => {
 
 const oldVNodeHook = options.vnode;
 options.vnode = (vnode) => {
+	if (oldVNodeHook) oldVNodeHook(vnode);
+
 	const type = vnode.type;
 	const props = vnode.props;
 
@@ -119,7 +122,6 @@ options.vnode = (vnode) => {
 			props.children = replaceIterables(props.children);
 		}
 	}
-	if (oldVNodeHook) oldVNodeHook(vnode);
 };
 
 function setRef(name, value) {
@@ -273,6 +275,8 @@ export default {
 	useTransition,
 	useDeferredValue,
 	useSyncExternalStore,
+	useEffectEvent,
+	use,
 	startTransition,
 	useRef,
 	useImperativeHandle,
@@ -305,7 +309,6 @@ export default {
 	unstable_batchedUpdates,
 	StrictMode,
 	Suspense,
-	SuspenseList,
 	lazy,
 	__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED
 };
@@ -323,6 +326,8 @@ export {
 	useTransition,
 	useDeferredValue,
 	useSyncExternalStore,
+	useEffectEvent,
+	use,
 	startTransition,
 	useRef,
 	useImperativeHandle,
@@ -355,7 +360,6 @@ export {
 	unstable_batchedUpdates,
 	StrictMode,
 	Suspense,
-	SuspenseList,
 	lazy,
 	__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED
 };

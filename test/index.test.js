@@ -46,6 +46,25 @@ describe('Component', () => {
 			expect(c).toBeDefined();
 			expect(c.refs).toHaveProperty('foo', scratch.firstElementChild);
 		});
+
+		it('should populate string refs on child class components', () => {
+			let parent;
+			class Child extends React.Component {
+				render() {
+					return <span />;
+				}
+			}
+			class Foo extends React.Component {
+				render() {
+					parent = this;
+					// @ts-ignore-next
+					return <Child ref="child" />;
+				}
+			}
+			ReactDOM.render(<Foo />, scratch);
+			expect(parent).toBeDefined();
+			expect(parent.refs.child).toBeInstanceOf(Child);
+		});
 	});
 
 	describe('Attribute semantics for width & height props on media elements', () => {

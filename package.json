@@ -19,14 +19,16 @@
     "dist"
   ],
   "peerDependencies": {
-    "preact": ">=10.26.0 < 11"
+    "preact": ">=11.0.0 < 12"
   },
   "dependencies": {
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
     "@babel/plugin-transform-react-jsx": "^7.10.4",
+    "@babel/preset-env": "7.12.13",
     "@types/jest": "^26.0.13",
+    "babel-jest": "26.3.0",
     "eslint": "^7.8.1",
     "eslint-config-developit": "^1.2.0",
     "eslint-config-prettier": "^6.11.0",
@@ -34,8 +36,34 @@
     "jest": "^26.4.2",
     "microbundle": "^0.13.0",
     "npm-merge-driver-install": "^1.1.1",
-    "preact": "^10.26.0",
+    "preact": "^11.0.0",
     "prettier": "^2.1.1"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.[jt]sx?$": "babel-jest",
+      "/node_modules/preact/.+\\.mjs$": [
+        "babel-jest",
+        {
+          "presets": [
+            [
+              "@babel/preset-env",
+              {
+                "targets": {
+                  "node": "current"
+                }
+              }
+            ]
+          ],
+          "plugins": [
+            "@babel/plugin-transform-react-jsx"
+          ]
+        }
+      ]
+    },
+    "transformIgnorePatterns": [
+      "/node_modules/(?!preact)"
+    ]
   },
   "babel": {
     "env": {
